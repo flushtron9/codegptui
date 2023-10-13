@@ -37,4 +37,23 @@ button {
 
 .file-upload-button {
   padding-top: 1rem;
+  justify-content: right;
+   button{
+    width: 7rem;
+    display: flex;
+    justify-content: space-around;
+   }
 }
+
+.list-group-item {
+  display: flex;
+}
+
+.info-title {
+  font-weight: 500;
+}
+
+.info-value {
+  padding-left: 0.5rem;
+}
+
