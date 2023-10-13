@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { ChartApiService } from './services/api.service';
 import { ImageUploadService } from './image-upload/image-upload.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent, ImageUploadComponent],
@@ -34,8 +35,9 @@ import { ImageUploadService } from './image-upload/image-upload.service';
     MatFormFieldModule,
     MatProgressBarModule,
     MatListModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [ChartApiService,ImageUploadService],
+  providers: [ChartApiService, ImageUploadService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
