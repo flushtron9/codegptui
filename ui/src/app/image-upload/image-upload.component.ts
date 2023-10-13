@@ -11,7 +11,7 @@ import { ImageUploadService } from './image-upload.service';
 export class ImageUploadComponent {
   selectedFiles?: FileList;
   selectedFileNames: string[] = [];
-  responseData:any;
+  responseData: any;
   chartData:any;
 
   progressInfos: any[] = [];
@@ -19,6 +19,18 @@ export class ImageUploadComponent {
 
   previews: string[] = [];
   imageInfos?: Observable<any>;
+
+  listInfo = [
+    { displayValue: 'Company Name', selector: 'shortName' },
+    { displayValue: 'Current Price', selector: 'ask' },
+    { displayValue: 'Open Price', selector: 'regularMarketOpen' },
+    { displayValue: 'Todays Highest', selector: 'regularMarketDayHigh' },
+    { displayValue: 'Todays Low', selector: 'regularMarketDayLow' },
+    { displayValue: 'Dividend Yield', selector: 'dividendYield' },
+    { displayValue: 'Price Range for 52 Weeks', selector: 'fiftyTwoWeekRange' },
+    { displayValue: '52 Weeks High', selector: 'fiftyTwoWeekHigh' },
+    { displayValue: '52 Weeks Low', selector: 'fiftyTwoWeekLow' },
+  ];
 
   constructor(private uploadService: ImageUploadService) {}
 calculateDate(milliSeconds1:string) {
