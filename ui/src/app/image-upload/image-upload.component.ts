@@ -2,6 +2,7 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ImageUploadService } from './image-upload.service';
+import Chart from "chart.js/auto";
 
 @Component({
   selector: 'app-image-upload',
@@ -13,6 +14,7 @@ export class ImageUploadComponent {
   selectedFileNames: string[] = [];
   responseData: any;
   chartData:any;
+  public chart: any;
 
   progressInfos: any[] = [];
   message: string[] = [];
