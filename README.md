@@ -1,3 +1,3 @@
 # codegptui
 
-https://youtu.be/cRDn6kHpU2U
+https://youtu.be/0AxbBAyt128
