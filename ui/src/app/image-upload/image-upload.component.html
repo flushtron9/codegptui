@@ -22,6 +22,68 @@
               accept="image/*"
               (change)="selectFiles($event)"
             />
+
+<section id="portfolio" class="portfolio section-padding">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="section-header text-center pb-5">
+                  <p>Take a picture<br>Start Investing</p>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12 col-md-12 col-lg-6">
+              <div class="card text-light text-center bg-white pb-2">
+                  <div class="card-body text-dark">
+                    <div class="img-area mb-4">
+                        
+                    </div>
+                      <h3 class="card-title">Upload the Image</h3>
+                      <div class="app-container">
+                        <div>
+                          <img *ngFor='let preview of previews' [src]="preview" class="preview">
+                        </div>
+                        <mat-form-field>
+                          <div>
+                            <mat-toolbar class="file-upload-button">
+                              <input matInput/>
+                              <button type="button" class="btn btn-primary" (click)="uploadFiles()">Scan</button>
+                        
+                            </mat-toolbar>
+                        
+                            <input
+                              type="file"
+                              id="fileInput"
+                              name="fileInput"
+                              accept="image/*"
+                              (change)="selectFiles($event)"
+                            />
+                          </div>
+                        </mat-form-field>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-12 col-md-12 col-lg-6">
+              <div class="card text-light text-center bg-white pb-2">
+                  <div class="card-body text-dark">
+                    <div class="img-area mb-4">
+                        
+                    </div>
+                      <h3 class="card-title">Information on the company</h3>
+                      <div class="col col-lg-6 lead"  style="padding-top:20px">
+                              <canvas  id="MyChart" >{{ chart }}</canvas>
+
+                        <ul class="list-group">
+                          <li class="list-group-item">Company Name :- {{responseData?.optionChain?.result[0].quote['shortName']}}</li>
+                          <li class="list-group-item">Stock Ticker:-  {{responseData?.optionChain?.result[0].underlyingSymbol}}</li>
+                          <li class="list-group-item">Current Price :-  {{responseData?.optionChain?.result[0].quote['ask']}}</li>
+                        </ul>
+                      </div>
+                      <button class="btn bg-warning text-dark">Buy</button>
+                  </div>
+              </div>
           </div>
         </mat-form-field>
       </div>
@@ -39,3 +101,4 @@
     </div>
   </div>
 </div>
+</section>
