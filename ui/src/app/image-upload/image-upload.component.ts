@@ -12,6 +12,7 @@ export class ImageUploadComponent {
   selectedFiles?: FileList;
   selectedFileNames: string[] = [];
   responseData:any;
+  chartData:any;
 
   progressInfos: any[] = [];
   message: string[] = [];
@@ -20,7 +21,38 @@ export class ImageUploadComponent {
   imageInfos?: Observable<any>;
 
   constructor(private uploadService: ImageUploadService) {}
-
+calculateDate(milliSeconds1:string) {
+    let milliSeconds = new Date().getTime();
+    let date = new Date(milliSeconds1);
+    let time = date.toLocaleTimeString();
+    let dateNew= date.toLocaleDateString();
+    console.log('time', time, dateNew);
+    return time;
+  };
+  createChart(){ 
+    let labelsList :any[]=[];
+   this.chartData?.chart?.result[0].timestamp.forEach((data:any)=>{
+    labelsList.push(this.calculateDate(data));
+    });
+        this.chart = new Chart("MyChart", {
+      type: 'line', //this denotes tha type of chart
+      data: {// values on X-Axis
+        labels: labelsList, 
+	       datasets: [
+   
+          {
+            label:  this.chartData?.chart?.result[0].meta?.symbol,
+            data: this.chartData?.chart?.result[0].indicators['quote'][0].open,
+            backgroundColor: 'limegreen'
+          }  
+        ]
+      },
+      options: {
+        aspectRatio:2.5
+      }
+      
+    });
+  }
   selectFiles(event: any): void {
     this.message = [];
     this.progressInfos = [];
@@ -63,6 +95,13 @@ export class ImageUploadComponent {
       this.uploadService.upload(file).subscribe(
         (event: any) => {
           console.log(JSON.parse(event.data));
+                this.createChart();
+          this.responseData = JSON.parse(event.data);
+          this.chartData = JSON.parse(event.chartInfo);
+          console.log(this.chartData);
+          this.chart.destroy();
+
+          this.createChart();
           this.responseData = JSON.parse(event.data);
           if (event.type === HttpEventType.UploadProgress) {
             this.progressInfos[idx].value = Math.round(

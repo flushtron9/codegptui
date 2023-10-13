@@ -48,6 +48,8 @@
                     </div>
                       <h3 class="card-title">Information on the company</h3>
                       <div class="col col-lg-6 lead"  style="padding-top:20px">
+                              <canvas  id="MyChart" >{{ chart }}</canvas>
+
                         <ul class="list-group">
                           <li class="list-group-item">Company Name :- {{responseData?.optionChain?.result[0].quote['shortName']}}</li>
                           <li class="list-group-item">Stock Ticker:-  {{responseData?.optionChain?.result[0].underlyingSymbol}}</li>
